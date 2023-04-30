@@ -17,9 +17,30 @@ function handleUpload(event) {
 }
 
 // Handle classify button click
-function handleClassify() {
-  // Replace this with your API call to classify the bird image
-  resultContainer.innerText = 'Classification result';
+async function handleClassify() {
+    // Convert the image to a base64 encoded string
+    const canvas = document.createElement('canvas');
+    canvas.width = image.width;
+    canvas.height = image.height;
+    const context = canvas.getContext('2d');
+    context.drawImage(image, 0, 0, image.width, image.height);
+    const base64Image = canvas.toDataURL('image/jpeg', 0.5).split(',')[1];
+
+    // Call the API to classify the bird image
+    const response = await fetch("https://bigchia-bird-classifier.hf.space/run/predict", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+        data: [
+        `data:image/jpeg;base64,${base64Image}`,
+        ]
+    })
+    });
+
+    // Parse the API response and display the result
+    const data = await response.json();
+    console.log(data['data'][0]['confidences'][0]['label'])
+    resultContainer.innerText = data['data'][0]['confidences'][0]['label'];
 }
 
 // Handle clear button click
@@ -27,4 +48,22 @@ function handleClear() {
   image.src = '';
   fileInput.value = '';
   console.log('Clear button clicked');
+}
+
+async function classifyImage(reader) {
+    const response = await fetch("https://bigchia-bird-classifier.hf.space/run/predict", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            data: [
+                reader,
+            ]
+        })
+    });
+
+    const json = await response.json();
+    console.log(json);
+    const label = json['data'][0]['confidences'][0]['label'];
+    results.innerHTML = `<br/><img src="${reader.result}" width="300"> <p>${label}</p>`
+    console.log("Classification result: ", label);
 }
