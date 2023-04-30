@@ -47,6 +47,8 @@ async function handleClassify() {
 function handleClear() {
   image.src = '';
   fileInput.value = '';
+  fileInput = '';
+  resultContainer = '';
   console.log('Clear button clicked');
 }
 
