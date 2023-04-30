@@ -26,4 +26,5 @@ function handleClassify() {
 function handleClear() {
   image.src = '';
   fileInput.value = '';
+  console.log('Clear button clicked');
 }
