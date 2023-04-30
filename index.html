@@ -2,49 +2,23 @@
 <html>
   <head>
     <title>MotherBird</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
     <header>
-      <h1>Welcome to MotherBird</h1>
-      <nav>
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
+      <h1>Bird Classifier</h1>
     </header>
     <main>
-      <section id="about">
-        <h2>About Us</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id arcu ac sapien faucibus sagittis at sit amet felis. Vivamus aliquet dolor vel sem euismod, sit amet pulvinar nisi pharetra.</p>
-      </section>
-      <section id="services">
-        <h2>Our Services</h2>
-        <ul>
-          <li>Service 1</li>
-          <li>Service 2</li>
-          <li>Service 3</li>
-        </ul>
-      </section>
-      <section id="contact">
-        <h2>Contact Us</h2>
-        <form>
-          <label for="name">Name:</label>
-          <input type="text" id="name" name="name">
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email">
-          <label for="message">Message:</label>
-          <textarea id="message" name="message"></textarea>
-          <button type="submit">Send</button>
-        </form>
-      </section>
+      <h2>Upload an image of a bird and click the button to classify it</h2>
+      <form>
+        <input type="file" accept="image/*">
+        <button type="submit">Classify</button>
+      </form>
+      <div id="result"></div>
     </main>
     <footer>
-      <p>&copy; 2023 My Website</p>
+      <p>&copy; 2023 Bird Classifier</p>
     </footer>
+    <script src="script.js"></script>
   </body>
 </html>

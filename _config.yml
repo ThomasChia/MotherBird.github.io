@@ -1,9 +1,0 @@
-title: MotherBird
-description: A simple website created using Jekyll
-url: https://thomaschia.github.io/MotherBird.github.io/
-
-theme: jekyll-theme-cayman
-
-plugins:
-  - jekyll-feed
-  - jekyll-sitemap
