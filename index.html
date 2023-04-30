@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MotherBird</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header>
+    <div class="container">
       <h1>Bird Classifier</h1>
-    </header>
-    <main>
-      <h2>Upload an image of a bird and click the button to classify it</h2>
       <form>
-        <input type="file" accept="image/*">
-        <button type="submit">Classify</button>
+        <label for="file-input">Choose an image to upload</label>
+        <input type="file" id="file-input" accept="image/*" />
+        <button type="button" id="classify-button">Classify</button>
       </form>
-      <div id="result"></div>
-    </main>
-    <footer>
-      <p>&copy; 2023 Bird Classifier</p>
-    </footer>
+      <div id="result-container"></div>
+      <div id="image-container">
+        <img id="uploaded-image" alt="Uploaded image" />
+      </div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>

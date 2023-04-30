@@ -1,35 +1,23 @@
-// const form = document.querySelector('form');
-// const result = document.querySelector('#result');
-
-// form.addEventListener('submit', async (event) => {
-//   event.preventDefault();
-//   const file = event.target.elements[0].files[0];
-// });
-
-
-// get the button and input elements
-const classifyBtn = document.getElementById('classify-btn');
+// Get references to DOM elements
 const fileInput = document.getElementById('file-input');
+const classifyButton = document.getElementById('classify-button');
+const resultContainer = document.getElementById('result-container');
+const image = document.getElementById('uploaded-image');
 
-// add event listener to the button
-classifyBtn.addEventListener('click', () => {
-  // get the selected file
-  const file = fileInput.files[0];
-  
-  // make the API call to classify the bird
-  // replace the URL with the actual API endpoint
-  fetch('https://example.com/classify-bird', {
-    method: 'POST',
-    body: file,
-  })
-  .then(response => response.json())
-  .then(data => {
-    // display the result on the page
-    const resultContainer = document.getElementById('result-container');
-    resultContainer.innerHTML = `The bird is a ${data.species}.`;
-  })
-  .catch(error => {
-    // handle errors
-    console.error('Error:', error);
-  });
-});
+// Add event listener for file input
+fileInput.addEventListener('change', handleUpload);
+
+// Add event listener for classify button
+classifyButton.addEventListener('click', handleClassify);
+
+// Handle file upload
+function handleUpload(event) {
+  const file = event.target.files[0];
+  image.src = URL.createObjectURL(file);
+}
+
+// Handle classify button click
+function handleClassify() {
+  // Replace this with your API call to classify the bird image
+  resultContainer.innerText = 'Classification result';
+}
